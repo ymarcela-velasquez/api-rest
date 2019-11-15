@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
-
+module.exports = (mongoose) => {
 const Schema = mongoose.Schema
 
 //Schema
-const measuresSchema = new Schema({
+let measuresSchema = new Schema({
   weight: {
     type: Number,
     required: true
@@ -20,7 +19,9 @@ const measuresSchema = new Schema({
 })
 
 //Model
-const Measures = mongoose.model('Measures', measuresSchema)
+let modelSchema = new Schema(measuresSchema, {strict: true, timestamps: true})
+return modelSchema
+}
 
-module.exports = Measures
+
 

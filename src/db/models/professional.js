@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
 
+module.exports = (mongoose) => {
 const Schema = mongoose.Schema
 
 const professionalSchema = new Schema({
@@ -18,7 +18,10 @@ const professionalSchema = new Schema({
     required: [true, 'Profession is required']
   }
 })
+  
+let modelSchema = new Schema(professionalSchema, {strict: true, timestamps: true})
 
-const Professional = mongoose.model('Professinal', professionalSchema)
+return modelSchema
+}
 
-module.exports = Professional
+

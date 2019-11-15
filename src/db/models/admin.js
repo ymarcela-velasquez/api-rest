@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
 
+module.exports = (mongoose) => {
 const Schema = mongoose.Schema
-
-//schema
-let adminSchema = new Schema({
+  //schema
+let schema = new Schema({
   name: {
     type: String,
     required: [true, 'Name is required']
@@ -12,11 +11,11 @@ let adminSchema = new Schema({
     type: String,
     required: [true, 'Document is required']
   }
-  
 })
 
 //model
-const admin = mongoose.model('Admin',adminSchema)
+let modelSchema = new Schema(schema, {strict: true, timestamps: true})
+return modelSchema
+}
 
-module.exports = admin
 
